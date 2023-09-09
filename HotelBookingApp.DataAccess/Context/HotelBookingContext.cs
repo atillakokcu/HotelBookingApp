@@ -1,11 +1,7 @@
 ﻿using HotelBookignApp.Entity;
+using HotelBookingApp.DataAccess.Configuraitons;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HotelBookingApp.DataAccess.Context
 {
@@ -20,7 +16,7 @@ namespace HotelBookingApp.DataAccess.Context
             public HotelBookingContext CreateDbContext(string[] args)
             {
                 var builder = new DbContextOptionsBuilder<HotelBookingContext>();
-                var connectionString = "Server = GODSWHIP\\SQLEXPRESS; Database = AdvertisementDb; Trusted_Connection = True; TrustServerCertificate=True";
+                var connectionString = "Server = GODSWHIP\\SQLEXPRESS; Database = HotelBookingDb; Trusted_Connection = True; TrustServerCertificate=True";
                 builder.UseSqlServer(connectionString);
                 return new HotelBookingContext(builder.Options);
             }
@@ -28,7 +24,11 @@ namespace HotelBookingApp.DataAccess.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)// oluşturduğumuz configuraitonları burada tanıtmamız gerekiyor bu yüzden onmodelcreatng metodunu overide ettik
         {
-            base.OnModelCreating(modelBuilder);
+            modelBuilder.ApplyConfiguration(new PropertiesConfiguration());
+            modelBuilder.ApplyConfiguration(new ReservationConfiguraiton());
+            modelBuilder.ApplyConfiguration(new RoomConfiguration());
+            modelBuilder.ApplyConfiguration(new RoomPropertiesConfiguraiton());
+            
         }
 
 

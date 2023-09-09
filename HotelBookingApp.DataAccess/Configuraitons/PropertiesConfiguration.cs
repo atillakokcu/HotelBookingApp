@@ -14,7 +14,7 @@ namespace HotelBookingApp.DataAccess.Configuraitons
         public void Configure(EntityTypeBuilder<Properties> builder)
         {
             builder.Property(x=>x.PropertiesDescription).HasMaxLength(300).IsRequired();
-
+            
             
         }
     }

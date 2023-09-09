@@ -9,9 +9,9 @@ namespace HotelBookignApp.Entity
     public class RoomProperties : BaseEntity
     {
         public int RoomId { get; set; }
-        public Room Room { get; set; }
+        public Room Rooms { get; set; }
 
         public int PropertiesId { get; set; }
-        public Properties Properties { get; set; }
+        public Properties Propertiess { get; set; }
     }
 }
